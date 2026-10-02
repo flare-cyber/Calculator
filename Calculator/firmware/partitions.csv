@@ -1,0 +1,11 @@
+# ESP32-C3 4 MiB flash layout for the AI Calculator.
+#  nvs      : WiFi credentials + small settings (Preferences)
+#  otadata  : OTA selection state (kept for future OTA support)
+#  app0     : 3 MiB application slot (WiFi + TLS + U8g2 + ArduinoJson)
+#  spiffs   : scratch filesystem (cert bundle / logs / future assets)
+#
+# Name,     Type, SubType, Offset,   Size,     Flags
+nvs,        data, nvs,     0x9000,   0x5000,
+otadata,    data, ota,     0xE000,   0x2000,
+app0,       app,  ota_0,   0x10000,  0x300000,
+spiffs,     data, spiffs,  0x310000, 0xF0000,
